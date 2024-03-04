@@ -1,5 +1,7 @@
 import kotlin.text.Regex
-class CreditCard(val numbers: String) { // TODO(remover spaco e qualquer outro caracter q nao seja numeros)
+class CreditCard(numbersCard: String) {
+    val numbers = numbersCard.replace(" ", "")
+
     var isValid: Boolean  = false
         get() {
             return validatePrefixAndSize() && validateLunchAlgorithm()

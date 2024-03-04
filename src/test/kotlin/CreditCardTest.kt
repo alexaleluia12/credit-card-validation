@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -49,5 +50,11 @@ class CreditCardTest {
     fun `not valid Elo card`() {
         val card = CreditCard("6362971747129270")
         assertFalse(card.isValid)
+    }
+
+    @Test
+    fun `clean card input`() {
+        val card = CreditCard("6362 9717 4712 9270")
+        assertEquals("6362971747129270", card.numbers)
     }
 }
