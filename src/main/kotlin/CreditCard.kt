@@ -1,4 +1,5 @@
-class CreditCard(val numbers: String) {
+import kotlin.text.Regex
+class CreditCard(val numbers: String) { // TODO(remover spaco e qualquer outro caracter q nao seja numeros)
     var isValid: Boolean  = false
         get() {
             return validatePrefixAndSize() && validateLunchAlgorithm()
@@ -37,10 +38,12 @@ class CreditCard(val numbers: String) {
         val firstTowDigits = numbers.slice(0..< 2).toInt()
         var flag: Flag = when (firstTowDigits) {
             34, 37 -> Flag.AMEX
-            in 51..55 -> Flag.MASTER // parece q master card tem esses intervalos tmb : 2221–2720
+            in 51..55 -> Flag.MASTER
             else -> Flag.NOT_DEFINED
         }
-        if (numbers[0] == '4') {
+        if (verifyEloPrefix()) {
+            flag = Flag.ELO
+        } else if(numbers[0] == '4') {
             flag = Flag.VISA
         }
 
@@ -48,10 +51,24 @@ class CreditCard(val numbers: String) {
             Flag.VISA -> numbers.length == 13 || numbers.length == 16
             Flag.MASTER -> numbers.length == 16
             Flag.AMEX -> numbers.length == 15
+            Flag.ELO -> numbers.length == 16
             else -> false
         }
         this.flag = flag
         return correctSize
+    }
+
+    private fun verifyEloPrefix(): Boolean {
+        val startOptions = listOf(
+            "^50",
+            "^6[235]",
+            "^4011(78|79)",
+            "^43(1274|8935)",
+            "^45(1416|7393|763(1|2))"
+        )
+        val regexPattern = Regex(startOptions.joinToString("|"))
+        val result = regexPattern.find(numbers)
+        return result != null
     }
 }
 

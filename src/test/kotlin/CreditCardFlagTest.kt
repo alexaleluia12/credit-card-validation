@@ -2,6 +2,13 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class CreditCardFlagTest {
+
+    @Test
+    fun `correct identify Elo Flg` () {
+        val card = CreditCard("4514160000000003")
+        card.validatePrefixAndSize()
+        assertEquals(Flag.ELO, card.flag)
+    }
     @Test
     fun `correct identify Visa Flag`() {
         val card = CreditCard("4012888888881881")

@@ -38,4 +38,16 @@ class CreditCardTest {
         val card = CreditCard("5105105205105100")
         assertFalse(card.isValid)
     }
+
+    @Test
+    fun `valid Elo card`() {
+        val card = CreditCard("6362971747129170")
+        assertTrue(card.isValid)
+    }
+
+    @Test
+    fun `not valid Elo card`() {
+        val card = CreditCard("6362971747129270")
+        assertFalse(card.isValid)
+    }
 }

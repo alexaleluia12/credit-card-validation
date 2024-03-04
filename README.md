@@ -2,7 +2,7 @@
 
 ## Projeto pesssoal para praticar Kotlin, insipirado em: https://github.com/karan/Projects/
 
-## Suporta bandeiras: Master, Visa, Amex
+## Suporta bandeiras: Master, Visa, Amex, Elo
 
 ## Executar testes:
 `./gradlew test`
@@ -14,10 +14,13 @@ Verficar se o cartão é valido segue a ordem
 2. Lunh algoritmo
 
 #1
-bandera, prefix, tamanho
-master   51..55      16
-visa     4           13/16
-amex     34/37       15
+bandera, prefix,                    tamanho
+master   51..55                         16
+visa     4                              13/16
+amex     34/37                          15
+elo      link_ext                       16
+
+*link_ext=https://gist.github.com/gusribeiro/263a165db774f5d78251
 
 #2
 Considerando o número do cartao 192932372
