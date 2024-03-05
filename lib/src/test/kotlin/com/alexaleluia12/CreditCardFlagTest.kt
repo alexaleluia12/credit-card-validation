@@ -1,4 +1,6 @@
-import org.junit.jupiter.api.Test
+package com.alexaleluia12
+
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class CreditCardFlagTest {
