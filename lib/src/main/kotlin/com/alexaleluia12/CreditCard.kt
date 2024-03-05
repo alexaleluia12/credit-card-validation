@@ -10,7 +10,7 @@ class CreditCard(numbersCard: String) {
         }
     var flag = Flag.NOT_DEFINED
 
-    fun validateLunchAlgorithm(): Boolean {
+    internal fun validateLunchAlgorithm(): Boolean {
         val intNumbers = numbers.map { it.digitToInt() }
         val doubledNumbers = MutableList<Int>(intNumbers.size) { 0 }
         var count = 1
@@ -35,7 +35,7 @@ class CreditCard(numbersCard: String) {
         return subNumbers.sum() % 10 == 0
     }
 
-    fun validatePrefixAndSize(): Boolean {
+      internal fun validatePrefixAndSize(): Boolean {
         if (numbers.length <= 2) {
             return false
         }
